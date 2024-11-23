@@ -1,0 +1,127 @@
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.status-success {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.status-pending {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.status-error {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.device-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.device-active {
+    background-color: #10b981;
+}
+
+.device-inactive {
+    background-color: #ef4444;
+}
+
+.attendance-method {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+.method-rfid {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+.method-qr {
+    background-color: #f3e8ff;
+    color: #7c3aed;
+}
+
+.method-biometric {
+    background-color: #ecfdf5;
+    color: #059669;
+}
+
+#panelEstado{
+    padding-top: 4%;
+    box-shadow: var(--shadow-md);
+}
+
+#panelEstado{
+    box-shadow: var(--shadow-md);
+}
+
+.row{
+    margin-top: 2%;
+}
+
+
+
+.chart-container {
+    font-family: Arial, sans-serif;
+    max-width: 300px;
+    margin: 20px auto;
+  }
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .donut-chart {
+    width: 100%;
+    height: auto;
+  }
+
+  .percentage-label {
+    font-size: 3px;
+    fill: white;
+    font-weight: bold;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+
+  .legend-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .percentage {
+    color: #666;
+  }

@@ -1,0 +1,388 @@
+:root {
+    --primary-color: rgb(27, 57, 106);
+    --secondary-color: #1e40af;
+    --accent-color: #3b82f6;
+    --text-dark: #2c3e50;
+    --shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Variables globales */
+:root {
+    --navy-blue: #1a237e;
+    --light-blue: #3949ab;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+/* Navbar principal */
+.navbar {
+    background: linear-gradient(to right, var(--navy-blue), var(--light-blue));
+    padding: 1rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Container dentro del navbar */
+.navbar .container {
+    padding: 0 1.5rem;
+}
+
+/* Logo y título */
+.navbar-brand {
+    color: var(--white) !important;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.navbar-brand:hover {
+    transform: translateY(-2px);
+}
+
+.navbar-brand i {
+    font-size: 1.5rem;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.navbar-brand:hover i {
+    transform: rotate(15deg);
+}
+
+/* Menú de navegación */
+.navbar-nav {
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* Links de navegación */
+.nav-link {
+    color: var(--white) !important;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem !important;
+    border-radius: 6px;
+    transition: var(--transition);
+    position: relative;
+    opacity: 0.9;
+}
+
+/* Efecto hover para links */
+.nav-link:not(.btn):hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link:not(.btn)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--white);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.nav-link:not(.btn):hover::after {
+    width: 70%;
+}
+
+/* Link activo */
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+    opacity: 1;
+}
+
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* Botón de Iniciar Sesión */
+.nav-link.btn.btn-primary {
+    background-color: var(--white);
+    color: var(--navy-blue) !important;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem !important;
+    border: 2px solid var(--white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.nav-link.btn.btn-primary:hover {
+    background-color: transparent;
+    color: var(--white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nav-link.btn.btn-primary i {
+    transition: var(--transition);
+}
+
+.nav-link.btn.btn-primary:hover i {
+    transform: translateX(-3px);
+}
+
+/* Toggle button para móvil */
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Animación de entrada */
+@keyframes slideDown {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.nav-item {
+    animation: slideDown 0.5s ease forwards;
+    animation-delay: calc(var(--item-number) * 0.1s);
+}
+
+/* Ajustes responsive */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: var(--navy-blue);
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
+        text-align: center;
+        margin: 0.3rem 0;
+    }
+
+    .nav-link.btn.btn-primary {
+        margin: 0.5rem 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .navbar-nav {
+        gap: 0.2rem;
+    }
+}
+
+/* Ajuste para fixed-top */
+body {
+    padding-top: 76px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, rgb(27, 57, 106), var(--text-dark));
+    padding: 6rem 3rem;
+    text-align: center;
+    color: white;
+    border-radius: 0 0 15px 15px;
+    box-shadow: var(--shadow-md);
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    padding: 2rem;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 1s ease-in;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Button Styles */
+.button-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.nav-item .nav-link.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    color: white !important;
+    /* Asegura que el texto sea siempre blanco */
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.2);
+    opacity: 1 !important;
+    /* Asegura que el botón nunca se vea desactivado */
+}
+
+.button {
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.button-primary {
+    background-color: #ffffff;
+    color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.button-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Feature Cards */
+.features-section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 3rem;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card-body{
+    padding: 15px 20px 30px 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+}
+
+
+/* Testimonial Section */
+.testimonial-section {
+    background: linear-gradient(135deg, rgb(27, 57, 106), rgb(27, 57, 106));
+    padding: 3rem 0;
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    color: white;
+}
+
+.testimonial-logo {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.blockquote {
+    font-style: italic;
+}
+
+.blockquote-footer {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .hero-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .testimonial-logo {
+        width: 100%;
+        max-width: 250px;
+        height: 150px;
+    }
+}

@@ -1,0 +1,60 @@
+.root{
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.schedule-cell {
+    min-width: 120px;
+    font-size: 0.85rem;
+}
+
+.time-cell {
+    min-width: 100px;
+}
+
+.period-badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+.occupied {
+    background-color: #e74c3c !important;
+    color: white;
+    position: relative;
+}
+
+.available {
+    background-color: #2ecc71 !important;
+    color: white;
+}
+
+.time-info {
+    font-size: 0.7rem;
+    display: block;
+}
+
+.occupation-legend {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.container-fluid{
+    padding-top: 3%;
+    box-shadow: var(--shadow-md);
+}
+
+.card{
+    box-shadow: var(--shadow-md);
+}

@@ -1,0 +1,92 @@
+:root {
+    --primary-color: rgb(27, 57, 106);
+    --secondary-color: #1e40af;
+    --accent-color: #3b82f6;
+    --text-dark: #2c3e50;
+    --shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background: linear-gradient(135deg, rgb(27, 57, 106), rgb(27, 57, 106));
+    min-height: 100vh;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-radius: 15px; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+    transition: transform 0.3s ease;
+    margin-top: 10%; 
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.form-container {
+    padding: 10px; /* Reducido de 15px */
+    width: 90%; /* Ajustado para darle algo de margen en pantallas pequeñas */
+    max-width: 90vw; /* Ajustado para mejor escalado */
+    box-sizing: border-box;
+}
+
+.form-control {
+    border-radius: 8px; /* Reducido de 10px */
+    padding: 10px; /* Reducido de 12px */
+    border: 1.5px solid #e0e0e0; /* Más delgado */
+    font-size: 0.9rem; /* Reducido ligeramente */
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.2); /* Más sutil */
+    border-color: #667eea;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #667eea, #1e40af);
+    border: none;
+    padding: 10px; 
+    border-radius: 8px; 
+    font-size: 0.9rem; 
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px); /* Ajustado para una elevación menor */
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); /* Más pequeño */
+}
+
+.input-group-text {
+    font-size: 0.9rem; 
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.login-icon {
+    font-size: 2.5rem; 
+    color: #1e40af;
+    margin-bottom: 0.8rem; 
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.forgot-password {
+    font-size: 0.85rem; 
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}

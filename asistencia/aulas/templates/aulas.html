@@ -1,0 +1,183 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block login %}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid mt-4">
+        <div class="row mb-4">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="card-title">Bitácora de Prácticas</h5>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+                                <i class="fas fa-plus me-2"></i>Nueva Entrada
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Aula</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Docente</th>
+                                        <th>Materia</th>
+                                        <th>Práctica</th>
+                                        <th>Carrera</th>
+                                        <th>Estudiantes H/M</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-registros">
+                                    {% for registro in registros %}
+                                        <tr>
+                                            <td>{{ registro.aula }}</td>
+                                            <td>{{ registro.fecha }}</td>
+                                            <td>{{ registro.hora }}</td>
+                                            <td>{{ registro.nombre_docente }}</td>
+                                            <td>{{ registro.materia }}</td>
+                                            <td>{{ registro.nombre_practica }}</td>
+                                            <td>{{ registro.carrera }}</td>
+                                            <td>{{ registro.estudiantes_hombres }}/{{ registro.estudiantes_mujeres }}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#addModal">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar/Editar -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nueva Entrada de Bitácora</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-registro">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Aula</label>
+                                <select class="form-select" id="aula" name="aula">
+                                    <option>R1</option>
+                                    <option>R2</option>
+                                    <option>R3</option>
+                                    <option>R4</option>
+                                    <option>R5</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Hora</label>
+                                <input type="time" class="form-control" id="hora" name="hora" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre del Docente</label>
+                                <input type="text" class="form-control" id="nombre_docente" name="nombre_docente" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Materia</label>
+                                <input type="text" class="form-control" id="materia" name="materia" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre de la Práctica</label>
+                                <input type="text" class="form-control" id="nombre_practica" name="nombre_practica" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Carrera</label>
+                                <input type="text" class="form-control" id="carrera" name="carrera" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">No. Estudiantes Hombres</label>
+                                <input type="number" class="form-control" id="estudiantes_hombres" name="estudiantes_hombres" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">No. Estudiantes Mujeres</label>
+                                <input type="number" class="form-control" id="estudiantes_mujeres" name="estudiantes_mujeres" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="guardar-btn">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agregar Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Agregar jQuery y AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#guardar-btn').on('click', function(e) {
+                e.preventDefault();  // Evitar el envío tradicional del formulario
+
+                // Capturar los datos del formulario
+                var formData = $('#form-registro').serialize();
+
+                // Enviar los datos del formulario al servidor con AJAX
+                $.ajax({
+                    url: '/laboratorios/',  // La URL de la vista
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            // Cerrar el modal
+                            $('#addModal').modal('hide');
+
+                            // Agregar el nuevo registro a la tabla sin recargar la página
+                            var nuevaFila = `
+                                <tr>
+                                    <td>${$('#aula').val()}</td>
+                                    <td>${$('#fecha').val()}</td>
+                                    <td>${$('#hora').val()}</td>
+                                    <td>${$('#nombre_docente').val()}</td>
+                                    <td>${$('#materia').val()}</td>
+                                    <td>${$('#nombre_practica').val()}</td>
+                                    <td>${$('#carrera').val()}</td>
+                                    <td>${$('#estudiantes_hombres').val()}/${$('#estudiantes_mujeres').val()}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#addModal">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `;
+                            $('#tabla-registros').append(nuevaFila);
+
+                            // Limpiar los campos del formulario
+                            $('#form-registro')[0].reset();
+                        } else {
+                            alert(response.mensaje);  // Mostrar mensaje de error si no se guarda
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

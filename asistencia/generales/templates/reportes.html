@@ -1,0 +1,518 @@
+{% extends 'home.html' %}
+{% load static %}
+{%block login%}
+{% endblock %}
+{% block content%}
+
+<link rel="stylesheet" href="{% static 'css/reportes.css' %}">
+
+<div class="container-fluid py-4" id="cont1">
+    <!-- Panel de Estado del Sistema -->
+    <div class="row mb-3" id="panelEstado">
+        <!-- Estado de Dispositivos -->
+        <div class="col-lg-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Estado de Dispositivos</h6>
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="device-status device-active"></span>
+                                Lector RFID - Entrada Principal
+                            </div>
+                            <span class="badge bg-success">Online</span>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="device-status device-active"></span>
+                                Escáner QR - R1
+                            </div>
+                            <span class="badge bg-success">Online</span>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="device-status device-active"></span>
+                                Escáner RFID - R2
+                            </div>
+                            <span class="badge bg-success">Online</span>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="device-status device-active"></span>
+                                Lector Biométrico - R7
+                            </div>
+                            <span class="badge bg-success">Online</span>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="device-status device-active"></span>
+                                Lector Biométrico - R8
+                            </div>
+                            <span class="badge bg-success">Online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Indicadores y Gráfica -->
+        <div class="col-lg-9">
+            <div class="row">
+                <!-- Indicadores -->
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Registros Hoy</h6>
+                            <h2 class="mb-0">248</h2>
+                            <small>Último registro hace 2 min</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Asistencias a Tiempo</h6>
+                            <h2 class="mb-0">235</h2>
+                            <small>94.7% del total</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-warning">
+                        <div class="card-body">
+                            <h6 class="card-title">Tardanzas</h6>
+                            <h2 class="mb-0">10</h2>
+                            <small>4% del total</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Errores de Lectura</h6>
+                            <h2 class="mb-0">3</h2>
+                            <small>1.2% del total</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica Mensual -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h6 class="card-title">Gráfica Mensual de Asistencia</h6>
+                            <svg class="donut-chart" viewBox="0 0 100 100" style="max-width: 200px;">
+                                <!-- Círculo base -->
+                                <circle cx="50" cy="50" r="40" fill="transparent" stroke="#eee" stroke-width="20" />
+                                <!-- Asistencias -->
+                                <circle cx="50" cy="50" r="40" fill="transparent" stroke="#FFB347" stroke-width="20"
+                                    stroke-dasharray="103.67 207.35" stroke-dashoffset="-0" />
+                                <!-- Fallas de lectura -->
+                                <circle cx="50" cy="50" r="40" fill="transparent" stroke="#6495ED" stroke-width="20"
+                                    stroke-dasharray="91.49 207.35" stroke-dashoffset="-103.67" />
+                                <!-- Faltas docente -->
+                                <circle cx="50" cy="50" r="40" fill="transparent" stroke="#9370DB" stroke-width="20"
+                                    stroke-dasharray="69.80 207.35" stroke-dashoffset="-195.16" />
+                                <!-- Faltas -->
+                                <circle cx="50" cy="50" r="40" fill="transparent" stroke="#FF6B6B" stroke-width="20"
+                                    stroke-dasharray="48.40 207.35" stroke-dashoffset="-264.96" />
+                            </svg>
+                            <div class="legend mt-3">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #FF6B6B;"></div>
+                                    <div class="legend-text">Faltas (15.4%)</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #6495ED;"></div>
+                                    <div class="legend-text">Fallas de Lectura (29.1%)</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #9370DB;"></div>
+                                    <div class="legend-text">Faltas Docente (22.2%)</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #FFB347;"></div>
+                                    <div class="legend-text">Asistencias (33%)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Fin de Row -->
+</div>
+
+
+
+<!-- Registro en Tiempo Real -->
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">
+                    <i class="fas fa-clock me-2"></i>
+                    Registros en Tiempo Real
+                </h5>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-success me-2">
+                    <i class="fas fa-file-excel me-2"></i>Exportar
+                </button>
+                <button class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-sync-alt"></i> Actualizar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Método</th>
+                        <th>Ubicación</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>14:30:12</td>
+                        <td>A1234</td>
+                        <td>Juan Pérez</td>
+                        <td>Alumno</td>
+                        <td>
+                            <span class="attendance-method method-rfid">
+                                <i class="fas fa-id-card"></i> RFID
+                            </span>
+                        </td>
+                        <td>Entrada Principal</td>
+                        <td><span class="status-badge status-success">Registrado</span></td>
+                    </tr>
+                    <tr>
+                        <td>14:29:45</td>
+                        <td>D0056</td>
+                        <td>María González</td>
+                        <td>Docente</td>
+                        <td>
+                            <span class="attendance-method method-biometric">
+                                <i class="fas fa-fingerprint"></i> Biométrico
+                            </span>
+                        </td>
+                        <td>Sala Docentes</td>
+                        <td><span class="status-badge status-success">Registrado</span></td>
+                    </tr>
+                    <tr>
+                        <td>14:28:30</td>
+                        <td>A1567</td>
+                        <td>Pedro Ramírez</td>
+                        <td>Alumno</td>
+                        <td>
+                            <span class="attendance-method method-qr">
+                                <i class="fas fa-qrcode"></i> QR
+                            </span>
+                        </td>
+                        <td>Puerta 2</td>
+                        <td><span class="status-badge status-error">Error de Lectura</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Panel de Control -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Estado de Sensores Biométricos</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="border rounded p-3">
+                            <h6>Sensor Principal</h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success">
+                                    <i class="fas fa-check-circle"></i> Operativo
+                                </span>
+                                <span>Lecturas hoy: 45</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="border rounded p-3">
+                            <h6>Sensor Secundario</h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success">
+                                    <i class="fas fa-check-circle"></i> Operativo
+                                </span>
+                                <span>Lecturas hoy: 32</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Sección de Estadísticas de Asistencia -->
+<div class="row mb-4">
+    <!-- Tabla de Asistencias Agrupadas -->
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="mb-0">
+                            <i class="fas fa-chart-bar me-2"></i>
+                            Resumen de Asistencias
+                        </h5>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-select-sm">
+                            <option>Última Semana</option>
+                            <option>Último Mes</option>
+                            <option>Trimestre</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-success me-2">
+                            <i class="fas fa-file-excel me-2"></i>Exportar
+                        </button>
+                        <button class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-sync-alt"></i> Actualizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Salón</th>
+                                <th>Clase</th>
+                                <th>Horario</th>
+                                <th>Asistencias</th>
+                                <th>Tardanzas</th>
+                                <th>Ausencias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>14/11/2024</td>
+                                <td>R-8</td>
+                                <td>Programación</td>
+                                <td>9-11</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress flex-grow-1" style="height: 8px;">
+                                            <div class="progress-bar bg-success" style="width: 90%"></div>
+                                        </div>
+                                        <span class="ms-2">27/30</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>14/11/2024</td>
+                                <td>R-5</td>
+                                <td>TICS</td>
+                                <td>9-11</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress flex-grow-1" style="height: 8px;">
+                                            <div class="progress-bar bg-success" style="width: 85%"></div>
+                                        </div>
+                                        <span class="ms-2">25/30</span>
+                                    </div>
+                                </td>
+                                <td>3</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>13/11/2024</td>
+                                <td>R-6</td>
+                                <td>Física</td>
+                                <td>11-13</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress flex-grow-1" style="height: 8px;">
+                                            <div class="progress-bar bg-success" style="width: 95%"></div>
+                                        </div>
+                                        <span class="ms-2">28/30</span>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Agregamos Chart.js para la gráfica -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        // Configuración de la gráfica
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+                datasets: [{
+                    label: 'Asistencias',
+                    data: [245, 238, 242, 248, 235],
+                    borderColor: '#10b981',
+                    tension: 0.4
+                }, {
+                    label: 'Tardanzas',
+                    data: [8, 12, 9, 10, 15],
+                    borderColor: '#f59e0b',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h5 class="mb-0">
+                                <i class="fas fa-users me-2"></i>
+                                Distribución por Género
+                            </h5>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select form-select-sm">
+                                <option>Hoy</option>
+                                <option>Esta Semana</option>
+                                <option>Este Mes</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success me-2">
+                                <i class="fas fa-file-excel me-2"></i>Exportar
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-sync-alt"></i> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+
+
+
+                        <!-- Tabla de Distribución por Clase -->
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Salon</th>
+                                            <th>Clase</th>
+                                            <th>Horario</th>
+                                            <th>Hombres</th>
+                                            <th>Mujeres</th>
+                                            <th>Total</th>
+                                            <th>Distribución</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>R-8</td>
+                                            <td>Programación</td>
+                                            <td>9-11</td>
+                                            <td>18</td>
+                                            <td>12</td>
+                                            <td>30</td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar"
+                                                        style="width: 60%" aria-valuenow="60" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-danger" role="progressbar"
+                                                        style="width: 40%" aria-valuenow="40" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>R-5</td>
+                                            <td>TICS</td>
+                                            <td>9-11</td>
+                                            <td>15</td>
+                                            <td>15</td>
+                                            <td>30</td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar"
+                                                        style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-danger" role="progressbar"
+                                                        style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>R-6</td>
+                                            <td>Física</td>
+                                            <td>11-13</td>
+                                            <td>20</td>
+                                            <td>10</td>
+                                            <td>30</td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar"
+                                                        style="width: 67%" aria-valuenow="67" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-danger" role="progressbar"
+                                                        style="width: 33%" aria-valuenow="33" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
